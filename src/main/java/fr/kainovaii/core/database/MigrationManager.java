@@ -1,8 +1,13 @@
 package fr.kainovaii.core.database;
 
 import org.javalite.activejdbc.Base;
+import org.reflections.Reflections;
+import org.reflections.scanners.Scanners;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 public class MigrationManager
@@ -23,6 +28,37 @@ public class MigrationManager
         migration.type = this.dbType;
         migration.logger = this.logger;
         migrations.add(migration);
+        return this;
+    }
+
+    public MigrationManager discover(String packageName)
+    {
+        try {
+            Reflections reflections = new Reflections(packageName, Scanners.SubTypes);
+            Set<Class<? extends Migration>> migrationClasses = reflections.getSubTypesOf(Migration.class);
+
+            List<Migration> discoveredMigrations = new ArrayList<>();
+
+            for (Class<? extends Migration> migrationClass : migrationClasses) {
+                try {
+                    Migration migration = migrationClass.getDeclaredConstructor().newInstance();
+                    migration.type = this.dbType;
+                    migration.logger = this.logger;
+                    discoveredMigrations.add(migration);
+                } catch (Exception e) {
+                    logger.warning("Impossible d'instancier la migration: " + migrationClass.getName() + " - " + e.getMessage());
+                }
+            }
+
+            discoveredMigrations.sort(Comparator.comparing(m -> m.getClass().getSimpleName()));
+            migrations.addAll(discoveredMigrations);
+
+            logger.info(discoveredMigrations.size() + " migration(s) découverte(s) dans " + packageName);
+
+        } catch (Exception e) {
+            logger.severe("Erreur lors de la découverte des migrations: " + e.getMessage());
+        }
+
         return this;
     }
 

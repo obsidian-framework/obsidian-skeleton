@@ -23,8 +23,9 @@ public class Spark
     public void loadMigrations()
     {
         MigrationManager migrations = new MigrationManager(DB.getInstance(), logger);
-
+        migrations.discover("fr.kainovaii.spark.app.migrations");
         migrations.migrate();
+        migrations.status();
     }
 
     public void loadContainer()

@@ -58,12 +58,5 @@ table.string("code").unique()
 table.integer("user_id").foreignKey("users", "id")</code></pre>
             </div>
         </div>
-
-        <div>
-            <div class="text-gray-400 text-sm mb-3">Lancer les migrations</div>
-            <div class="bg-zinc-950 border border-zinc-800 p-6">
-                <pre><code class="language-bash">mvn exec:java -Dexec.args="migrate"</code></pre>
-            </div>
-        </div>
     </div>
 </section>
