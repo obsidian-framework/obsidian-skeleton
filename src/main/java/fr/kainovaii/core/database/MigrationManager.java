@@ -46,17 +46,17 @@ public class MigrationManager
                     migration.logger = this.logger;
                     discoveredMigrations.add(migration);
                 } catch (Exception e) {
-                    logger.warning("Impossible d'instancier la migration: " + migrationClass.getName() + " - " + e.getMessage());
+                    logger.warning("Unable to instantiate the migration: " + migrationClass.getName() + " - " + e.getMessage());
                 }
             }
 
             discoveredMigrations.sort(Comparator.comparing(m -> m.getClass().getSimpleName()));
             migrations.addAll(discoveredMigrations);
 
-            logger.info(discoveredMigrations.size() + " migration(s) découverte(s) dans " + packageName);
+            logger.info(discoveredMigrations.size() + "migration(s) discovered in " + packageName);
 
         } catch (Exception e) {
-            logger.severe("Erreur lors de la découverte des migrations: " + e.getMessage());
+            logger.severe("Error discovering migrations: " + e.getMessage());
         }
 
         return this;
