@@ -4,15 +4,9 @@ import fr.kainovaii.core.Spark;
 
 public class Main
 {
-    public static void main(String[] args) throws Exception
+    public static void main(String[] args)
     {
         Spark app = new Spark();
-        app.registerMotd();
-        app.loadConfigAndEnv();
-        app.connectDatabase();
-        app.loadMigrations();
-        app.loadContainer();
-        app.startWebServer();
-        app.initWebsite();
+        app.init();
     }
 }
