@@ -1,0 +1,73 @@
+<section id="csrf">
+    <h2 class="text-3xl font-bold text-white mb-6">CSRF Protection</h2>
+
+    <p class="text-gray-400 mb-6">
+        Protection automatique contre les attaques Cross-Site Request Forgery.
+    </p>
+
+    <div class="space-y-6">
+        <div>
+            <div class="text-gray-400 text-sm mb-3">Activer la protection sur une route</div>
+            <div class="bg-zinc-950 border border-zinc-800 p-6">
+                <pre class="line-numbers"><code class="language-java">@CsrfProtect
+@POST(value = "/articles", name = "articles.store")
+private Object store(Request req, Response res) {
+    // Token validé automatiquement
+    // Si invalide → 403 Forbidden
+}</code></pre>
+            </div>
+        </div>
+
+        <div>
+            <div class="text-gray-400 text-sm mb-3">Dans les formulaires HTML</div>
+            <div class="bg-zinc-950 border border-zinc-800 p-6">
+                <pre class="line-numbers"><code class="language-twig">&lt;form method="POST" action="/articles"&gt;
+    {{ "{{" }} csrf_field() | raw {{ "}}" }}
+
+    &lt;input type="text" name="title"&gt;
+    &lt;button type="submit"&gt;Create&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+        </div>
+
+        <div>
+            <div class="text-gray-400 text-sm mb-3">Pour les requêtes AJAX</div>
+            <div class="bg-zinc-950 border border-zinc-800 p-6">
+                <pre class="line-numbers"><code class="language-javascript">const csrfToken = '{{ "{{" }} csrf_token() {{ "}}" }}';
+
+fetch('/articles', {
+    method: 'POST',
+    headers: {
+        'X-CSRF-TOKEN': csrfToken,
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ title: 'My article' })
+});</code></pre>
+            </div>
+        </div>
+
+        <div>
+            <div class="text-gray-400 text-sm mb-3">Régénérer le token (après login)</div>
+            <div class="bg-zinc-950 border border-zinc-800 p-6">
+                <pre class="line-numbers"><code class="language-java">@POST("/login")
+private Object login(Request req, Response res) {
+    if (isLogged(req)) {
+        regenerateCsrfToken(req);
+        res.redirect("/dashboard");
+    }
+    return null;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="bg-zinc-900 border border-zinc-800 p-6 rounded">
+            <div class="text-blue-400 mb-2">💡 Comportement</div>
+            <ul class="text-gray-400 text-sm space-y-1">
+                <li>• Les requêtes GET/HEAD/OPTIONS ne sont jamais protégées</li>
+                <li>• POST/PUT/DELETE/PATCH nécessitent l'annotation @CsrfProtect</li>
+                <li>• Le token expire après 1 heure d'inactivité</li>
+                <li>• Le token peut être envoyé via header X-CSRF-TOKEN ou champ _csrf</li>
+            </ul>
+        </div>
+    </div>
+</section>

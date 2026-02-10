@@ -6,26 +6,23 @@
   <packaging>jar</packaging>
   <name>Spark-Skeleton</name>
   <description>Starting spark web project</description>
-
   <properties>
     <java.version>17</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
   <repositories>
     <repository>
       <id>github</id>
       <url>https://maven.pkg.github.com/kainovaii/spark-core</url>
     </repository>
   </repositories>
-
   <dependencies>
     <dependency>
       <groupId>io.github.kainovaii</groupId>
       <artifactId>spark-core</artifactId>
-      <version>1.0.4</version>
+      <version>1.0.7</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -34,7 +31,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
   <build>
     <resources>
       <resource>
@@ -42,7 +38,6 @@
         <filtering>false</filtering>
       </resource>
     </resources>
-
     <plugins>
       <!-- Compiler -->
       <plugin>
@@ -54,7 +49,6 @@
           <target>${java.version}</target>
         </configuration>
       </plugin>
-
       <!-- ActiveJDBC Instrumentation -->
       <plugin>
         <groupId>org.javalite</groupId>
@@ -69,7 +63,6 @@
           </execution>
         </executions>
       </plugin>
-
       <!-- Shade plugin pour créer JAR avec dépendances et merger activejdbc_models.properties -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

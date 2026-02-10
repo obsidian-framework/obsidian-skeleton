@@ -16,5 +16,6 @@ public class GlobalAdviceController extends BaseController
         if (isLogged(req)) setGlobal("loggedUser", getLoggedUser(req));
         Map<String, String> flashes = collectFlashes(req);
         setGlobal("flashes", flashes);
+        setGlobal("request", req);
     }
 }
