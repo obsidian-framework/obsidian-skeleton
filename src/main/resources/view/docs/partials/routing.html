@@ -9,7 +9,7 @@
         <div>
             <div class="text-gray-400 text-sm mb-3">Available annotations</div>
             <div class="bg-zinc-950 border border-zinc-800 p-6">
-                                    <pre class="line-numbers"><code class="language-java">@GET(value = "/articles", name = "articles.index")
+                <pre class="line-numbers"><code class="language-java">@GET(value = "/articles", name = "articles.index")
 @POST(value = "/articles", name = "articles.store")
 @PUT(value = "/articles/:id", name = "articles.update")
 @DELETE(value = "/articles/:id", name = "articles.delete")
@@ -20,7 +20,7 @@
         <div>
             <div class="text-gray-400 text-sm mb-3">Route parameters</div>
             <div class="bg-zinc-950 border border-zinc-800 p-6">
-                                    <pre class="line-numbers"><code class="language-java">@GET(value = "/articles/:id", name = "articles.show")
+                <pre class="line-numbers"><code class="language-java">@GET(value = "/articles/:id", name = "articles.show")
 private Object show(Request req, Response res) {
     String id = req.params(":id");
     // ...
@@ -31,12 +31,37 @@ private Object show(Request req, Response res) {
         <div>
             <div class="text-gray-400 text-sm mb-3">Query parameters</div>
             <div class="bg-zinc-950 border border-zinc-800 p-6">
-                                    <pre class="line-numbers"><code class="language-java">@GET(value = "/search", name = "search")
+                <pre class="line-numbers"><code class="language-java">@GET(value = "/search", name = "search")
 private Object search(Request req, Response res) {
     String query = req.queryParams("q");
     String page = req.queryParams("page");
     // ...
 }</code></pre>
+            </div>
+        </div>
+
+        <div>
+            <div class="text-gray-400 text-sm mb-3">Named routes</div>
+            <div class="bg-zinc-950 border border-zinc-800 p-6">
+                <p class="text-gray-400 mb-4">
+                    Use the <code class="text-red-400">name</code> parameter to reference routes by name instead of hardcoding paths.
+                </p>
+                <pre class="line-numbers"><code class="language-java">// In your controller
+@GET(value = "/articles/:id", name = "articles.show")
+private Object show(Request req, Response res) {
+    // ...
+}</code></pre>
+
+                <p class="text-gray-400 mt-4 mb-2">In your Pebble templates:</p>
+                <pre class="line-numbers"><code class="language-twig">&lt;a href="&#123;&#123; route(name='articles.show') &#125;&#125;"&gt;View Article&lt;/a&gt;
+&lt;form action="&#123;&#123; route(name='articles.store') &#125;&#125;" method="post"&gt;
+    &lt;!-- form fields --&gt;
+&lt;/form&gt;</code></pre>
+
+                <p class="text-gray-400 mt-4 mb-2">Programmatic access:</p>
+                <pre class="line-numbers"><code class="language-java">String path = Route.getPath("articles.show"); // returns "/articles/:id"
+boolean exists = Route.hasRoute("articles.show"); // returns true
+Map&lt;String, String&gt; all = Route.getAllRoutes(); // returns all named routes</code></pre>
             </div>
         </div>
     </div>

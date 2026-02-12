@@ -11,7 +11,7 @@ import java.util.Map;
 @Controller
 public class HomeController extends BaseController
 {
-    @GET(value = "/", name = "site_home")
+    @GET(value = "/", name = "site.home")
     private Object homepage(Request req, Response res)
     {
         return render("landing/home.html", Map.of());
