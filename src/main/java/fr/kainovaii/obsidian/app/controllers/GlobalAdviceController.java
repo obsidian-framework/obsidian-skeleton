@@ -1,7 +1,7 @@
 package fr.kainovaii.obsidian.app.controllers;
 
-import fr.kainovaii.obsidian.core.web.controller.BaseController;
-import fr.kainovaii.obsidian.core.web.controller.GlobalAdvice;
+import fr.kainovaii.obsidian.http.controller.BaseController;
+import fr.kainovaii.obsidian.http.controller.annotations.GlobalAdvice;
 import spark.Request;
 import spark.Response;
 
