@@ -53,7 +53,7 @@ if /i "%TYPE%"=="DEV" (
     set /p TEXT="Enter text: "
     git add --all
     git commit -m "Dev (!TEXT!)"
-    git push -u origin dev
+    git push -u origin main
     echo Task complete
     goto END
 )
