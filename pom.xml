@@ -14,15 +14,15 @@
   </properties>
   <repositories>
     <repository>
-      <id>github</id>
-      <url>https://maven.pkg.github.com/kainovaii/spark-core</url>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
     </repository>
   </repositories>
   <dependencies>
     <dependency>
-      <groupId>io.github.kainovaii</groupId>
-      <artifactId>obsidian-core</artifactId>
-      <version>1.1.0</version>
+      <groupId>com.github.obsidian-framework</groupId>
+      <artifactId>core</artifactId>
+      <version>e25d4308d0</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>

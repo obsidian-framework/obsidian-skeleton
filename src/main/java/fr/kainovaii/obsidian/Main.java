@@ -6,6 +6,6 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Obsidian.run(Main.class);
+        Obsidian.run(Main.class, args);
     }
 }
