@@ -1,1 +1,0 @@
-mvn clean package && cls && java -jar target/Obsidian-1.0.1.jar

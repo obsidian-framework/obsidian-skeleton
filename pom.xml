@@ -22,7 +22,7 @@
     <dependency>
       <groupId>com.github.obsidian-framework</groupId>
       <artifactId>core</artifactId>
-      <version>v1.1.0</version>
+      <version>v1.1.8</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -39,6 +39,14 @@
       </resource>
     </resources>
     <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.6.3</version>
+        <configuration>
+          <mainClass>fr.kainovaii.obsidian.Main</mainClass>
+        </configuration>
+      </plugin>
       <!-- Compiler -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
