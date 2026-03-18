@@ -1,7 +1,7 @@
 <p align="center"><a href="https://obsidian-java.com/" target="_blank"><img src="https://obsidian-java.com/assets/img/logo.png" width="300" alt="Laravel Logo"></a></p>
 
 <p align="center">
-    <a href="https://github.com/laravel/framework/actions">
+    <a href="#">
         <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
     </a>
     <a href="(https://www.oracle.com/java/">
@@ -22,7 +22,7 @@ Obsidian brings modern development conventions to the Spark Java framework. Buil
 The skeleton includes a pre-configured project structure, build scripts, and example code to get you up and running in minutes.
 
 ```bash
-git clone https://github.com/obsidian-framework/skeleton.git
+git clone https://github.com/obsidian-framework//obsidian.git
 cd skeleton
 mvn clean package
 mvn exec:java
