@@ -22,7 +22,7 @@ Obsidian brings modern development conventions to the Spark Java framework. Buil
 The skeleton includes a pre-configured project structure, build scripts, and example code to get you up and running in minutes.
 
 ```bash
-git clone https://github.com/obsidian-framework//obsidian.git
+git clone https://github.com/obsidian-framework/obsidian.git
 cd skeleton
 mvn clean package
 mvn exec:java
