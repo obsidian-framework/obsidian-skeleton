@@ -22,7 +22,7 @@
     <dependency>
       <groupId>com.github.obsidian-framework</groupId>
       <artifactId>core</artifactId>
-      <version>v3.5.0</version>
+      <version>v3.7.0</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
